@@ -68,10 +68,12 @@ def ParseCacheFile (parseFile):
     print "key: {0}".format(key)
     print "key sha1: {0}\n".format(key_hash)
 
-    parseFile.seek(0, os.SEEK_SET)
-    data = parseFile.read(metaStart)
-    with open("/tmp/out", "wb") as data_out:
-        data_out.write(data)
+    # Save file in cache
+    if args.save :
+        parseFile.seek(0, os.SEEK_SET)
+        data = parseFile.read(metaStart)
+        with open("/tmp/out", "wb") as data_out:
+            data_out.write(data)
 
 #ParseCacheFile(testFile)
 #procPath = script_dir + '/' + testDir
